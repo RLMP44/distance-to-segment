@@ -16,27 +16,29 @@ function redrawAll() {
   drawDot(B, "B");
   drawDot(M, "M");
   drawSegment(A, B);
+  const result = distanceFromPointToSegment(M, A, B);
+  drawText(result.value);
+  drawArrow(result.point, M);
 
   // drawArrow(A);
   // drawArrow(B);
   // drawArrow(M);
+}
 
+function distanceFromPointToSegment(M, A, B) {
   const { point, t } = projectPointToSegment(M, A, B);
   drawDot(point, 'point');
   // if along the segment, we know the distance
   if ( t > 0 && t < 1) {
-    drawText(distance(M, point));
-    drawArrow(point, M);
+    return { point: point, value: distance(M, point) };
   } else {
     // handle cases when point is not on segment
     const distToA = distance(M, A);
     const distToB = distance(M, B);
     if (distToA < distToB) {
-      drawText(distToA);
-      drawArrow(A, M);
+      return { point: A, value: distToA };
     } else {
-      drawText(distToB);
-      drawArrow(B, M);
+      return { point: B, value: distToB };
     }
   }
 }
