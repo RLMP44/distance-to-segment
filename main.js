@@ -32,12 +32,20 @@ function projectPointToSegment(M, A, B) {
   drawArrow(add(AM, A), A);
 
   // scaling by the inverse of it's length
-  const nAB = normalize(AB);
-  const nAM = normalize(AM);
-  drawArrow(add(nAM, A), A);
+  // const nAB = normalize(AB);
+  // const nAM = normalize(AM);
+  // drawArrow(add(nAM, A), A);
 
   // displays the direction relative to the current segment
-  const t = dot(nAM, nAB);
+  // const t = dot(nAM, nAB);
+  // drawText(t);
+
+  // scaling by the inverse of it's length
+  const nAB = normalize(AB);
+
+  // displays the distance from point A
+  // to the point's (would be) intersection with the segment
+  const t = dot(AM, nAB);
   drawText(t);
 
 }
