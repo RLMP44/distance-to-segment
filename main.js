@@ -8,10 +8,35 @@ myCanvas.addEventListener("mousemove", (event) => {
   redrawAll();
 })
 
+redrawAll()
+
 function redrawAll() {
   clear();
   drawDot(A, "A");
   drawDot(B, "B");
   drawDot(M, "M");
   drawSegment(A, B);
+
+  // drawArrow(A);
+  // drawArrow(B);
+  // drawArrow(M);
+
+  projectPointToSegment(M, A, B);
+}
+
+function projectPointToSegment(M, A, B) {
+  const AB = subtract(B, A);
+  drawArrow(add(AB, A), A);
+
+  const AM = subtract(M, A);
+  drawArrow(add(AM, A), A);
+
+  // scaling by the inverse of it's length
+  const nAB = normalize(AB);
+  const nAM = normalize(AM);
+  drawArrow(add(nAM, A), A);
+
+  const t = dot(nAM, nAB);
+  drawText(t);
+
 }
