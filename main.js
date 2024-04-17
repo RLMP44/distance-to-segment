@@ -8,6 +8,20 @@ myCanvas.addEventListener("mousemove", (event) => {
   redrawAll();
 })
 
+myCanvas.addEventListener("click", (event) => {
+  A.x = event.offsetX;
+  A.y = event.offsetY;
+  redrawAll();
+})
+
+// right click
+myCanvas.addEventListener("contextmenu", (event) => {
+  B.x = event.offsetX;
+  B.y = event.offsetY;
+  redrawAll();
+  event.preventDefault();
+})
+
 redrawAll()
 
 function redrawAll() {
