@@ -45,7 +45,10 @@ function projectPointToSegment(M, A, B) {
 
   // displays the distance from point A
   // to the point's (would be) intersection with the segment
-  const t = dot(AM, nAB);
+  const t = dot(AM, nAB) / distance(A, B);
   drawText(t);
 
+  // gets a point between A and B that is t% away from A
+  const point = lerp2D(A, B, t);
+  drawDot(point, 'point');
 }
