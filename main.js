@@ -23,6 +23,11 @@ function redrawAll() {
 
   const { point, t } = projectPointToSegment(M, A, B);
   drawDot(point, 'point');
+  // if along the segment, we know the distance
+  if ( t > 0 && t < 1) {
+    drawText(distance(M, point));
+    drawArrow(point, M);
+  }
 }
 
 function projectPointToSegment(M, A, B) {
