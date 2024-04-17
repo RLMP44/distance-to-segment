@@ -27,6 +27,17 @@ function redrawAll() {
   if ( t > 0 && t < 1) {
     drawText(distance(M, point));
     drawArrow(point, M);
+  } else {
+    // handle cases when point is not on segment
+    const distToA = distance(M, A);
+    const distToB = distance(M, B);
+    if (distToA < distToB) {
+      drawText(distToA);
+      drawArrow(A, M);
+    } else {
+      drawText(distToB);
+      drawArrow(B, M);
+    }
   }
 }
 
