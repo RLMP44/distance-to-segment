@@ -36,6 +36,7 @@ function projectPointToSegment(M, A, B) {
   const nAM = normalize(AM);
   drawArrow(add(nAM, A), A);
 
+  // displays the direction relative to the current segment
   const t = dot(nAM, nAB);
   drawText(t);
 
